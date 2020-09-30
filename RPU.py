@@ -195,7 +195,7 @@ if __name__ == "__main__":
     print()
 
     # X and Y
-    data = pd.read_csv('https://raw.githubusercontent.com/Hyuto/NLP/master/TRAIN.CSV')
+    data = pd.read_csv('https://raw.githubusercontent.com/Hyuto/BDC-Satria-Data/master/TRAIN.CSV')
     TRAIN_X, VAL_X, TRAIN_y, VAL_y = train_test_split(data.X.values, data.y.values, test_size = config.TEST_SIZE, 
                                                        random_state = SEED, stratify = data.y.values)
 

@@ -3,9 +3,7 @@ Memprediksi Hoax dari gambar dan text.
 
 Website sumber data [dsini](http://turnbackhoax.id/)<br>
 Kaggle Data [dsini](https://www.kaggle.com/wahyusetianto/data-bdc)<br>
-# To Do :
-Hand labeling test data. [Done]<br> 
-Ngak tau dah buat cross check apa buat submission awkwkk
+
 ## Images
 <ol>
     <li>Preprocess Data & EDA [Done]
