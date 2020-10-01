@@ -45,21 +45,25 @@ Melakukan masking untuk kata kata yang mengandung `URL, Hashtag, Tag, Emoji`
 ## Modelling
 ### Images
 <table style="text-align: center;margin-left: auto;margin-right: auto;">
-    <tr>
-        <th>Model</th>
-        <th>Best Accuracy</th>
-        <th>Best F1 Score</th>
-    </tr>
-    <tr>
-        <td>EfficientNet B5</td>
-        <td>82,6%</td>
-        <td>89,5%</td>
-    </tr>
-    <tr>
-        <td>EfficientNet B7</td>
-        <td>83,5%</td>
-        <td>90,5%</td>
-    </tr>
+    <thead>
+        <tr>
+            <th>Model</th>
+            <th>Best Accuracy</th>
+            <th>Best F1 Score</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>EfficientNet B5</td>
+            <td>82,6%</td>
+            <td>89,5%</td>
+        </tr>
+        <tr>
+            <td>EfficientNet B7</td>
+            <td>83,5%</td>
+            <td>90,5%</td>
+        </tr>
+    </tbody>
 </table>
 
 ### Teks
