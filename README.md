@@ -1,82 +1,93 @@
 # Satria Data
 Memprediksi Hoax dari gambar dan text.
 
-Website sumber data [dsini](http://turnbackhoax.id/)<br>
-Kaggle Data [dsini](https://www.kaggle.com/wahyusetianto/data-bdc)<br>
+### Konten
+| Konten              | Laman Kontent |
+|   -------------     |:-------------:| 
+| Website sumber data | [turnbackhoax.id](http://turnbackhoax.id/)                  |
+| Kaggle Data         | [dsini](https://www.kaggle.com/wahyusetianto/data-bdc)      |
+| Model               | [disini](https://www.kaggle.com/pencarikebahagiaan/modelku) |
+<br>
 
-## Images
-<ol>
-    <li>Preprocess Data & EDA [Done]
-    <p>Preprocess:
-    <ul>
-        <li>Karena ukuran gambar yang berbeda - beda maka diambil sample tengah" tiap gambar.
-        <li>Meresize gambar ke ukuran 512 x 512
-    </ul>
-    <li>Up Sampling & Augmentasi [Done]
-    <ul>
-        <li>Up Sampling data gambar kelas 0 sebesar: 50%, 100%, dan 200%
-        <li>Augmentasi dengan : Rotasi secara acak pada rentang -70 sd 70 derajad
-    </ul>
-    <li>Memiilih Transfer Learning
-    <table style="text-align:center">
-        <tr>
-            <th>Model</th>
-            <th>Best Accuracy</th>
-            <th>Best F1 Score</th>
-        </tr>
-        <tr>
-            <td>EfficientNet B5</td>
-            <td>82,6%</td>
-            <td>89,5%</td>
-        </tr>
-        <tr>
-            <td>EfficientNet B7</td>
-            <td>83,5%</td>
-            <td>90,5%</td>
-        </tr>
-    </table>
-</ol>
+## Preprocess Data
+### Gambar
+1. Karena ukuran gambar yang berbeda - beda maka diambil sample tengah - tengah tiap gambar.<br>
+<img src = "Sample Images/1.jpg" alt = "prep 1" style="display: block; margin-left: auto; margin-right: auto; width: 50%;" />
+1. Resize gambar ke ukuran 512 x 512.
+1. Upsampling dengan Augmentasi data.<br>
+Up Sampling data gambar kelas 0 sebesar : 50%, 100%, dan 200%, dengan menggunakan `augmentasi`. Augmentasi yang akan digunakan pada data gambar yaitu:<br>
+`Rotasi secara acak pada rentang -70 sd. 70 derajad`<br>
 
-## Teks
-<ol>
-    <li>Preprocess Data & EDA
-    <p>Preprocess:
-    <ul>
-        <li> Drop Duplicate Value pada data text
-        <li> Normalize text
-        <li> Clear String Punctuation
-        <li> De-emojized
-        <li> Fixxing misstype / typo [Manual wkwk]
-    </ul>
-    <li>Memiilih Transfer Learning
-    <table style="text-align:center">
-        <tr>
-            <th>Model</th>
-            <th>Best Accuracy</th>
-            <th>Best F1 Score</th>
-        </tr>
-        <tr>
-            <td>Fasttext ID on Embedding + Simple CNN</td>
-            <td> 86,2% </td>
-            <td> 92,2% </td>
-        </tr>
-        <tr>
-            <td>XLM - Roberta</td>
-            <td> - </td>
-            <td> - </td>
-        </tr>
-        <tr>
-            <td>BERT Multilangual</td>
-            <td> - </td>
-            <td> - </td>
-        </tr>
-    </table>
-</ol>
+### Text
+1. Drop Duplicate Value pada data text
+1. Masking Content sebelum di normalize [Encode]<br>
+Melakukan masking untuk kata kata yang mengandung `URL, Hashtag, Tag, Emoji`
+    ```
+    # Contoh
+    Website Statistika UNJ adalah http://fmipa.unj.ac.id/statistika/
+    BEM Statistika UNJ #AltairBergerakMengukir
+    @jokowi adalah presiden RI
+    Lucu 😂
+
+    # Encode
+    Website Statistika UNJ adalah MASKURLS1MASK
+    BEM Statistika UNJ MASKHASHTAGS1MASK
+    MASKTAGS1MASK adalah presiden RI
+    Lucu MASKEMOJIS1MASK
+    ```
+1. Normalize text
+1. Decode mask content [Decode]
+1. Clear String Punctuation
+1. De-emojized
+1. Fixxing misstype / typo [Manual 😂]
+<br><br>
+
+## Modelling
+### Images
+<table style="text-align:center;margin-left: auto;margin-right: auto;">
+    <tr>
+        <th>Model</th>
+        <th>Best Accuracy</th>
+        <th>Best F1 Score</th>
+    </tr>
+    <tr>
+        <td>EfficientNet B5</td>
+        <td>82,6%</td>
+        <td>89,5%</td>
+    </tr>
+    <tr>
+        <td>EfficientNet B7</td>
+        <td>83,5%</td>
+        <td>90,5%</td>
+    </tr>
+</table>
+<br>
+
+### Teks
+<table style="text-align:center;margin-left: auto;margin-right: auto;">
+    <tr>
+        <th>Model</th>
+        <th>Best Accuracy</th>
+        <th>Best F1 Score</th>
+    </tr>
+    <tr>
+        <td>Fasttext ID on Embedding + Simple CNN</td>
+        <td> 86,2% </td>
+        <td> 92,2% </td>
+    </tr>
+    <tr>
+        <td>Bert Base Indonesian </td>
+        <td> 86.6 - 87 % </td>
+        <td> 92.6 - 92.8 % </td>
+    </tr>
+</table>
+<br><br>
 
 ## Note:
 1. EfficientNetB7 akurasinya jadi lebih stabil dengan weight `noise-student`
-1. Model CNN pada Fasttext sangat simple, jadi mungkin akurasinya bisa bertamabah lagi jika dioptimaliisasi atau menggunakan RNN
-1. Jika menggunakan `LSTM` gak tau kenapa hasil yang diberikan selalu lebih dari hasil yang di berikan, padahal hasilnya lebig bagus.
-1. Masih ada banyak kata yang misspel sehingga cukup banya kata yang tidak mendapatkan vector dari `Fastext`.
+1. Model CNN pada Fasttext sangat simple, jadi mungkin akurasinya bisa bertamabah lagi jika dioptimalisasi atau menggunakan RNN.
+1. Masih ada banyak kata yang misspel sehingga cukup banya katak yang tidak mendapatkan vector dari `Fastext`.
+1. Model `Bert` yang di gunakan adalah [cahya/bert-base-indonesian-522M](https://huggingface.co/cahya/bert-base-indonesian-522M).
+1. Dari model model yang ada bert dapat mengklasifikasikan hoax lebih baik dari model - model lainnya namun tetap memiliki kesulitan dalam mengenali kelas 0.
 
  © Catatan Cakrawala 2020

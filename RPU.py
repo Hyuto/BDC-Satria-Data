@@ -14,10 +14,12 @@ SEED = 42
 os.environ['PYTHONHASHSEED'] = str(SEED)
 random.seed(SEED)
 np.random.seed(SEED)
-
 os.environ['TF_CPP_MIN_LOG_LEVEL'] = '1'
 
 class Config(object):
+    """
+    Config for running in shell
+    """
     def __init__(self):
         self.SIZE = 256
         self.TEST_SIZE = 0.15
@@ -152,6 +154,9 @@ def ApplyAUG(TRAIN_X, TRAIN_y, PATH:str, LP, data_aug, up_sample_ratio = 0.2,
     return X, Y
 
 def name_based_config(config, arg):
+    """
+    Name based
+    """
     if ':' in arg:
         tipe, value = arg.split(':')
         if '-' in value:
@@ -161,6 +166,9 @@ def name_based_config(config, arg):
     else: pass
 
 def get_config(config, args):
+    """
+    Get config from CMD
+    """
     try: config.SIZE = int(args[2])
     except: 
         try: name_based_config(config, args[2])
