@@ -40,7 +40,7 @@ Melakukan masking untuk kata kata yang mengandung `URL, Hashtag, Tag, Emoji`
 1. Clear String Punctuation
 1. De-emojized
 1. Fixxing misstype / typo [Manual 😂]
-<br><br>
+<br>
 
 ## Modelling
 ### Images
@@ -61,7 +61,6 @@ Melakukan masking untuk kata kata yang mengandung `URL, Hashtag, Tag, Emoji`
         <td>90,5%</td>
     </tr>
 </table>
-<br>
 
 ### Teks
 <table style="text-align: center;margin-left: auto;margin-right: auto;">
@@ -81,7 +80,6 @@ Melakukan masking untuk kata kata yang mengandung `URL, Hashtag, Tag, Emoji`
         <td> 92.6 - 92.8 % </td>
     </tr>
 </table>
-<br><br>
 
 ## Note:
 1. EfficientNetB7 akurasinya jadi lebih stabil dengan weight `noise-student`
