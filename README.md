@@ -7,7 +7,6 @@ Memprediksi Hoax dari gambar dan text.
 | Website sumber data | [turnbackhoax.id](http://turnbackhoax.id/)                  |
 | Kaggle Data         | [dsini](https://www.kaggle.com/wahyusetianto/data-bdc)      |
 | Model               | [disini](https://www.kaggle.com/pencarikebahagiaan/modelku) |
-<br>
 
 ## Preprocess Data
 ### Gambar
@@ -40,7 +39,6 @@ Melakukan masking untuk kata kata yang mengandung `URL, Hashtag, Tag, Emoji`
 1. Clear String Punctuation
 1. De-emojized
 1. Fixxing misstype / typo [Manual 😂]
-<br>
 
 ## Modelling
 ### Images
