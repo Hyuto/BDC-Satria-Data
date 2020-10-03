@@ -17,10 +17,10 @@ Memprediksi Hoax dari gambar dan text.
 1. Upsampling dengan Augmentasi data.<br>
 Up Sampling data gambar kelas 0 sebesar : 50%, 100%, dan 200%, dengan menggunakan `augmentasi`. Augmentasi yang akan digunakan pada data gambar yaitu:<br>
 `Rotasi secara acak pada rentang -70 sd. 70 derajad`<br>
-    <img src = "Sample Images/download (3).png" alt = "prep 1" style="display: block; margin-left: auto; margin-right: auto; width: 80%;" />
+    <img src = "Sample Images/2.png" alt = "prep 2" style="display: block; margin-left: auto; margin-right: auto; width: 50%;" />
 
 ### Text
-1. Drop Duplicate Value pada data text
+1. Drop `duplicate value` pada data text
 1. Masking Content sebelum di normalize [Encode]<br>
 Melakukan masking untuk kata kata yang mengandung `URL, Hashtag, Tag, Emoji`
     ```
@@ -36,11 +36,34 @@ Melakukan masking untuk kata kata yang mengandung `URL, Hashtag, Tag, Emoji`
     MASKTAGS1MASK adalah presiden RI
     Lucu MASKEMOJIS1MASK
     ```
-1. Normalize text
-1. Decode mask content [Decode]
-1. Clear String Punctuation
-1. De-emojized
-1. Fixxing misstype / typo [Manual 😂]
+1. Normalize text<br>
+Melakukan normalisasi text yang berkaita dengan tanda baca berdasarkan kaidah penulisan bahasa Indonesia.
+    ```
+    # Contoh
+    Budi membayar2.000 ban yang dibelinya senilai rp.2.000.000
+
+    # Preprocessed
+    Budi membayar 2.000 ban yang dibelinya senilai rp. 2.000.000
+    ```
+1. Decode mask content<br>
+Mengembalikan konten yang di `encode` sebelumnya.
+    ```
+    # Contoh
+    Website Statistika UNJ adalah MASKURLS1MASK
+
+    # Decode
+    Website Statistika UNJ adalah http://fmipa.unj.ac.id/statistika/
+    ```
+1. Clear String Punctuation<br>
+Menghapus tanda baca dari data text
+1. De-emojized<br>
+Mengubah `emoji` yang ada pada text menjadi kata-kata yang melambangkan `emoji` tersebut
+    ```
+    🙏 -> folded hands
+    😃 -> grinning face with big eyes
+    ```
+1. Fixxing misstype / typo [Manual 😂]<br>
+Membenarkan kata - kata yang misstype atau typo dengan cara membuat vocabulary dari data text pada `Data Latih BDC.xlsx` lalu mengexportnya ke file `.txt` untuk dilakukan pemeriksaan secara manual.
 
 ## Modelling
 ### Images
