@@ -215,6 +215,12 @@ class SpellChecker(object):
 def clean_up(arr):
     r"""
     Cleanup \n and lowering text
+
+    Args:
+        arr ([np.ndarray, list]): Array / list dari kalimat - kalimat.
+
+    Returns:
+        [np.ndarray, list]: kalimat tanpa adanya \n dan sudah lowercased.
     """
     for i in range(len(arr)):
         arr[i] = arr[i].lower()
@@ -224,7 +230,14 @@ def clean_up(arr):
 
 def normalize(array, punc_ = punctuation):
     """
-    Normalize text
+    Normalisasi penulisan tanda baca
+
+    Args:
+        arr ([np.ndarray, list]): Array / list dari kalimat - kalimat.
+        punc_ ([np.ndarray, list, set], optional): Tanda Baca. Defaults to string.punctuation
+
+    Returns:
+        [np.ndarray, list]: kalimat yang sudah dibenarkan penulisan tanda bacanya.
     """
     punc, arr = punc_, array.copy()
     for i in range(len(arr)):
@@ -242,18 +255,51 @@ def normalize(array, punc_ = punctuation):
 
 def remove_punc(arr, punc_ = punctuation):
     """
-    Remove string punctuation
+    Menghapus tanda baca pada text.
+
+    Args:
+        arr ([np.ndarray, list]): Array / list dari kalimat - kalimat.
+        punc_ ([np.ndarray, list, set], optional): Tanda Baca. Defaults to string.punctuation
+
+    Returns:
+        [np.ndarray, list]: kalimat tanpa tanda baca.
     """
     return asarray([x.translate(str.maketrans('', '', punc_))
                     for x in arr])
 
 def deemojized(arr):
     """
-    De Emojized text
+    De-Emojized emoji pada string
+
+    Args:
+        arr ([np.ndarray, list]): Array / list dari kalimat - kalimat
+
+    Returns:
+        [np.ndarray, list]: Kalimat - kalimat
     """
     for i in range(len(arr)):
         arr[i] = demojize(arr[i])
         arr[i] = sub(':', ' ', arr[i])
         arr[i] = sub('_', ' ', arr[i])
         arr[i] = ' '.join(arr[i].split())
+    return arr
+
+def RUnecesarry(array, stopwords):
+    """
+    Remove Unnecessary words
+
+    Args:
+        array ([np.ndarray, list]): Array / list dari kalimat - kalimat
+        stopwords([np.ndarray, list, set, tupple]) : Stopwords yang akan di hapus dari text
+
+    Returns:
+        [np.ndarray, list]: Kalimat yang sudah di bersihkan
+    """
+    arr = array.copy()
+    for i in range(len(arr)):
+        temp = arr[i].split()
+        temp = [x for x in temp if not (len(x) == 1 and \
+                (x in ascii_lowercase or x in digits))]
+        temp = [x for x in temp if x not in stopwords]
+        arr[i] = ' '.join(temp).lower()
     return arr

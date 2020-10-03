@@ -30,6 +30,7 @@ Fungsi :
 4. `normalize` => Normalisasi peletakan tanda baca
 5. `remove_punc` => Menghapus tanda baca
 6. `deemojized` => Mengganti `Emoji` menjadi kalimat 
+7. `RUnecesarry` => Menghapus kata kata yang tidak perlu dan juga menghapus `stopwords`
 
 ## Requirements :
 ### `RPU.py`
