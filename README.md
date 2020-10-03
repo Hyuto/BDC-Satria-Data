@@ -11,10 +11,10 @@ Memprediksi Hoax dari gambar dan text (`Binary Classification`).
 | Model               | [disini](https://www.kaggle.com/pencarikebahagiaan/modelku) |
 
 ## Preprocess Data
-Preprocessing data. 
+Preprocessing data.
 ### Script preprocess:
 ```
-Preprocess code
+Preprocess code/
       |------- RPU.py
       |------- Preprocess.py
 ```
