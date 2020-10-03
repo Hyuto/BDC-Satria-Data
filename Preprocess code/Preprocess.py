@@ -1,7 +1,8 @@
 from re import findall, sub
+from numpy import asarray
 from pandas import DataFrame
-from emoji import get_emoji_regexp
-from string import punctuation
+from emoji import get_emoji_regexp, demojize
+from string import punctuation, digits, ascii_lowercase
 from tqdm.notebook import tqdm
 
 class FeatureExtraction(object):
@@ -210,3 +211,49 @@ class SpellChecker(object):
                     temp[j] = self.words[temp[j]]
             arr[i] = ' '.join(temp)
         return arr
+
+def clean_up(arr):
+    r"""
+    Cleanup \n and lowering text
+    """
+    for i in range(len(arr)):
+        arr[i] = arr[i].lower()
+        arr[i] = sub('\n', ' ', arr[i])
+        arr[i] = ' '.join(arr[i].split())
+    return arr
+
+def normalize(array, punc_ = punctuation):
+    """
+    Normalize text
+    """
+    punc, arr = punc_, array.copy()
+    for i in range(len(arr)):
+        temp = list(arr[i])
+        for j in range(1, len(temp) - 1):
+            if (temp[j] in punc) and not\
+            all([x in digits for x in [temp[j-1], temp[j+1]]]):
+                temp[j] = ' ' + temp[j] + ' '
+            elif (temp[j] in ascii_lowercase) and (temp[j + 1] \
+            in digits or temp[j + 1] in punc_):
+                temp[j] += ' '
+        arr[i] = ''.join(temp)
+        arr[i] = ' '.join(arr[i].split())
+    return arr
+
+def remove_punc(arr, punc_ = punctuation):
+    """
+    Remove string punctuation
+    """
+    return asarray([x.translate(str.maketrans('', '', punc_))
+                    for x in arr])
+
+def deemojized(arr):
+    """
+    De Emojized text
+    """
+    for i in range(len(arr)):
+        arr[i] = demojize(arr[i])
+        arr[i] = sub(':', ' ', arr[i])
+        arr[i] = sub('_', ' ', arr[i])
+        arr[i] = ' '.join(arr[i].split())
+    return arr
