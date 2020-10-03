@@ -3,8 +3,8 @@ Project team **Catatan Cakrawala** pada lomba `Big Data Competition - Satria Dat
 ### Task
 Memprediksi Hoax dari gambar dan text (`Binary Classification`).
 
-## Konten
-| Konten              | Laman Kontent |
+## Tambahan
+| Keterangan          | Laman Kontent |
 |   -------------     |:-------------:| 
 | Website sumber data | [turnbackhoax.id](http://turnbackhoax.id/)                  |
 | Kaggle Data         | [dsini](https://www.kaggle.com/wahyusetianto/data-bdc)      |
