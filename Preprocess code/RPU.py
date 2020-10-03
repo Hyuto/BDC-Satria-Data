@@ -41,12 +41,12 @@ def load_and_preprocess_image(path: str, size = (256, 256)) -> np.ndarray:
     """
     Load & Preprocess Text
 
-    Params
-    path           : Image Path
-    size           : Image resizing plan [Auto 256 x 256]
+    Args:
+        path (str): Image Path
+        size (tuple, optional): Image resizing plan [Auto 256 x 256]. Defaults to (256, 256).
 
-    Return
-    Numpy ndarray
+    Returns:
+        np.ndarray: Numpy array dari data gambar yang telah di preprocess
     """
     # Load image to array and then to tensor
     image = img_to_array(load_img(path))
@@ -70,11 +70,11 @@ def data_augmentation(x) -> np.ndarray:
     """
     Image Augmentation. Random rotation in range -70 to 70 degree.
 
-    Params
-    X               : Array of image
+    Args:
+        x ([np.ndarray]): Array of image
 
-    Return
-    Numpy ndarray
+    Returns:
+        np.ndarray: Numpy array dari gambar yang telah di augmentasi
     """
     return rotate(x, random.randint(-70, 70), mode='reflect')
 
@@ -84,23 +84,34 @@ def ApplyAUG(TRAIN_X, TRAIN_y, PATH:str, LP, data_aug, up_sample_ratio = 0.2,
     Fungsi untuk mengaplikasikan Preprocess dan Augmentation ke dalam data gambar untuk disimpan
     kedalam direktori/file yang baru.
 
-    Params
-    TRAIN_X         : List atau Array direktori dari gambar
-    TRAIN_y         : List atau Array kelas(label) dari TRAIN_X [One Hot Encoding]
-    PATH            : Direktori data gambar
-    LP              : Load & Preprocess image function
-    data_aug        : Augmentation function
-    up_sample_ratio : Rasio up sampling yang dikehendaki.
-    up_sample_class : Spesifikasi kelas yang akan dilakukan Augmentasi. Jika ini di isi maka 
-                      upsample hanya akan dilakukan pada kelas yang di spesifikasikan.
-
-    Return
-    List item pada direktori baru dan Labelnya.
+    Args:
+        TRAIN_X ([type]): List atau Array direktori dari gambar
+        TRAIN_y ([type]): List atau Array kelas(label) dari TRAIN_X [One Hot Encoding]
+        PATH (str): Direktori data gambar
+        LP ([type]): Load & Preprocess image function
+        data_aug ([type]): Augmentation function
+        up_sample_ratio (float, optional): Rasio up sampling yang dikehendaki.. Defaults to 0.2.
+        up_sample_class ([type], optional): Spesifikasi kelas yang akan dilakukan Augmentasi. 
+                                            Jika ini di isi maka upsample hanya akan dilakukan pada 
+                                            kelas yang di spesifikasikan. Defaults to None.
+        DIR (str, optional): Direktori tujuan. Defaults to 'Prep Data + AUG'.
+        SIZE (tuple, optional): Ukuran gambar. Defaults to (256, 256).
+    
+    Returns:
+        [np.ndarray], [np.ndarray]: Numpy array dari lokasi/direktori gambar yang telah di augmentasi dan
+                                    Numpy array dari label gambar.
     """
 
     def __up_sampling(up_sample_ratio:float, N:int) -> np.ndarray:
         """
         Up Sampling Plan. Randomly select image data according to up_sample_ratio.
+
+        Args:
+            up_sample_ratio (float): Up-sampling rasio
+            N (int): Populasi
+
+        Returns:
+            np.ndarray: [description]
         """
         # Get Div and Mod
         if up_sample_ratio >= 1:

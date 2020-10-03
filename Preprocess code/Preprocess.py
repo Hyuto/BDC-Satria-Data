@@ -27,13 +27,13 @@ class FeatureExtraction(object):
         Fungsi Static untuk mencari feature berdasarkan patternya. Jika argument pattern diisi maka akan mengembalikan
         Dictionary dari feature berdasarkan kelasnya.
 
-        params:
-        arr     : List atau np.ndarray dari teks
-        pattern : List pattern dari feature yang akan di cari
-        labels  : List atau np.ndarray label dari teks [Optional]
+        Args:
+            arr ([np.ndarray, list]): List atau np.ndarray dari teks
+            patterns ([np.ndarray, list]): List pattern dari feature yang akan di cari
+            labels ([np.ndarray, list], optional): List atau np.ndarray label dari teks. Defaults to None.
 
-        return:
-        Dictionary dari features yang telah di extract dari texts
+        Returns:
+            [dict]: Dictionary dari features yang telah di extract dari texts
         """
         res = {}
         # Loop Through
@@ -68,12 +68,14 @@ class FeatureExtraction(object):
         """
         Membuat table dari features
 
-        params:
-        feature     : Feature mana yang akan dilakukan tabulasi ['urls', 'hashtags', 'tags', 'emojis']
-        return_prop : Akan mengembalikan proporsi feature dari masing" kelas jika True [Auto = False]
-                      Jika ingin mengaktifkan feature ini perlu melakukan fitting dengan label.
-        return:
-        DataFrame dari Feature
+        Args:
+            feature ([np.ndarray, list, tuple]): Feature mana yang akan dilakukan tabulasi ['urls', 'hashtags', 'tags', 'emojis']
+            return_prop (bool, optional): Akan mengembalikan proporsi feature dari masing" kelas jika True.
+                                          Jika ingin mengaktifkan feature ini perlu melakukan fitting dengan label. 
+                                          Defaults to False.
+
+        Returns:
+            [pd.Dataframe]: DataFrame dari Feature
         """
         keys = list(self.features[feature].keys())  # Content data
         values = list(self.features[feature].values()) # Frekuensi data
@@ -98,15 +100,15 @@ class FeatureExtraction(object):
         Fitting terhadap data text. Proses fitting menggunakan label wajib dilakukan jika ingin menggunakan
         keseluruhan fugsi dari kelas ini.
 
-        params:
-        arr         : List atau np.ndarray dari texts data
-        label       : List atau np.ndarray dari kelas pada texts data jika diisi
-        search      : List dari feature yang akan dilakukan fitting ['urls', 'hashtags', 'tags', 'emojis'] Auto : 'all'
-                      Jika 'all' maka akan mencari semua feature yang disediakan
-        return_dict : Mengembalikan dalam bentuk dict
+        Args:
+            arr ([np.ndarray, list]): List atau np.ndarray dari texts data
+            label ([np.ndarray, list], optional): List atau np.ndarray dari kelas pada texts data jika diisi. Defaults to None.
+            search (str, optional): List dari feature yang akan dilakukan fitting ['urls', 'hashtags', 'tags', 'emojis'] Auto : 'all'
+                                    Jika 'all' maka akan mencari semua feature yang disediakan
+            return_dict (bool, optional): Mengembalikan dalam bentuk dict. Defaults to False.
 
-        return:
-        Dictionary jika return_dict == True
+        Returns:
+            [dict]: Dictionary dari features jika return_dict == True
         """
         if search == 'all': # Jika search == 'all'
             search = list(self.features.keys())
@@ -121,9 +123,13 @@ class FeatureExtraction(object):
         """
         Building Mask code dari Feature yang telah di extract.
 
-        params:
-        min_prop    : Minimal proporsi dari tiap content yang akan di gunakan(di masking)
-        features    : List dari feature
+        Args:
+            min_prop (float, optional): Minimal proporsi dari tiap content yang akan di gunakan(di masking). Defaults to 0.
+            features (str, optional)  : feature yang akan di decode, meliputi 'urls', 'hashtags', 'tags', dan 'emojis'. 
+                                        Defaults to 'all'.
+
+        Raises:
+            NotImplementedError: Kelas harus di fit terlebih dahulu dengan label.
         """
         if min_prop and self.labels == [] : raise NotImplementedError("Must fit with labels")
         if features == 'all':
@@ -146,6 +152,17 @@ class FeatureExtraction(object):
     def encode(self, array, features = 'all'):
         """
         Encoding data texts dari mask_code yang telah di buat
+
+        Args:
+            array ([np.ndarray, list]): List / Numpy array yang berisi kalimat - kalimat yang akan di-encode.
+            features (str, optional)  : feature yang akan di decode, meliputi 'urls', 'hashtags', 'tags', dan 'emojis'. 
+                                        Defaults to 'all'.
+
+        Raises:
+            NotImplementedError: Kelas harus di build_mask_code terlebih dahulu
+
+        Returns:
+            [np.ndarray, list]: List / Numpy array yang berisi kalimat - kalimat yang telah di-encode.
         """
         if self.encoding == {} : raise NotImplementedError("Must build mask code first")
         if features == 'all':
@@ -161,6 +178,15 @@ class FeatureExtraction(object):
     def decode(self, array):
         """
         Decoding data texts yang berisi mask_code kembali
+
+        Args:
+            array ([np.ndarray, list]): List / Numpy array yang berisi kalimat - kalimat yang akan di-decode.
+
+        Raises:
+            NotImplementedError: Harus fit class terlebih dahulu
+
+        Returns:
+            [np.ndarray, list]: List / Numpy array yang berisi kalimat - kalimat yang sudah di-decode.
         """
         if self.encoding == {} : raise NotImplementedError("Must build mask code first")
         features = list(self.features.keys())
@@ -185,8 +211,8 @@ class SpellChecker(object):
         """
         Fitting untuk mendapatkan vocab yang salah dan vocab yang benar dari file txt
 
-        param:
-        direc   : Direktori file txt yang berisi vocab
+        Args:
+            direc (str): Direktori file txt yang berisi vocab
         """
         f = open(direc, "r")
         for w in f.readlines():
@@ -201,8 +227,11 @@ class SpellChecker(object):
         """
         Mengganti kata - kata yang misspell berdasarkan vocab.
 
-        params:
-        arr     : List / Numpy array yang berisi kalimat - kalimat yang akan dibenarkan.
+        Args:
+            arr ([np.ndarray, list]): List / Numpy array yang berisi kalimat - kalimat yang akan dibenarkan.
+
+        Returns:
+            [np.ndarray, list]: Kalimat yang telah di benarkan kata - kata yang misspell
         """
         for i in tqdm(range(len(arr))):
             temp = arr[i].split()
