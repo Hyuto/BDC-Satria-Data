@@ -39,3 +39,5 @@ Fungsi :
    * pandas
    * emoji
    * tqdm
+
+ © Catatan Cakrawala 2020

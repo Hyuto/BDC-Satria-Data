@@ -80,7 +80,7 @@ Membenarkan kata - kata yang misstype atau typo dengan cara membuat vocabulary d
 
 ## Modelling
 ### Images
-<table style="text-align: center;margin-left: auto;margin-right: auto;">
+<table style="text-align: center; margin-left: auto; margin-right: auto;">
     <thead>
         <tr>
             <th>Model</th>
@@ -103,7 +103,7 @@ Membenarkan kata - kata yang misstype atau typo dengan cara membuat vocabulary d
 </table>
 
 ### Teks
-<table style="text-align: center;margin-left: auto;margin-right: auto;">
+<table style="text-align: center; margin-left: auto;margin-right: auto;">
     <tr>
         <th>Model</th>
         <th>Best Accuracy</th>
