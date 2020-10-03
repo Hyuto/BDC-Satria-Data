@@ -1,7 +1,9 @@
-# Satria Data
-Memprediksi Hoax dari gambar dan text.
+# Big Data Competition - Satria Data 2020
+Project team **Catatan Cakrawala** pada lomba `Big Data Competition - Satria Data 2020`
+### Task
+Memprediksi Hoax dari gambar dan text (`Binary Classification`).
 
-### Konten
+## Konten
 | Konten              | Laman Kontent |
 |   -------------     |:-------------:| 
 | Website sumber data | [turnbackhoax.id](http://turnbackhoax.id/)                  |
@@ -9,7 +11,18 @@ Memprediksi Hoax dari gambar dan text.
 | Model               | [disini](https://www.kaggle.com/pencarikebahagiaan/modelku) |
 
 ## Preprocess Data
-### Gambar
+Preprocessing data. 
+### Script preprocess:
+```
+Preprocess code
+      |------- RPU.py
+      |------- Preprocess.py
+```
+#### Keterangan :
+1. `RPU.py` => Script `Preprocess`, `Augmentasi`, dan `Up-sampling` data gambar
+2. `Preprocess.py` => Script `Preprocess` pada data text
+
+### Data Gambar
 1. Checking Missing Data
 1. Karena ukuran gambar yang berbeda - beda maka diambil sample tengah - tengah tiap gambar.<br>
     <img src = "Sample Images/1.jpg" alt = "prep 1" style="display: block; margin-left: auto; margin-right: auto; width: 50%;" />
@@ -19,7 +32,7 @@ Up Sampling data gambar kelas 0 sebesar : 50%, 100%, dan 200%, dengan menggunaka
 `Rotasi secara acak pada rentang -70 sd. 70 derajad`<br>
     <img src = "Sample Images/2.png" alt = "prep 2" style="display: block; margin-left: auto; margin-right: auto; width: 50%;" />
 
-### Text
+### Data Text
 1. Drop `duplicate value` pada data text
 1. Masking Content sebelum di normalize [Encode]<br>
 Melakukan masking untuk kata kata yang mengandung `URL, Hashtag, Tag, Emoji`
@@ -113,6 +126,6 @@ Membenarkan kata - kata yang misstype atau typo dengan cara membuat vocabulary d
 1. Model CNN pada Fasttext sangat simple, jadi mungkin akurasinya bisa bertamabah lagi jika dioptimalisasi atau menggunakan RNN.
 1. Masih ada banyak kata yang misspel sehingga cukup banya katak yang tidak mendapatkan vector dari `Fastext`.
 1. Model `Bert` yang di gunakan adalah [cahya/bert-base-indonesian-522M](https://huggingface.co/cahya/bert-base-indonesian-522M).
-1. Dari model model yang ada bert dapat mengklasifikasikan hoax lebih baik dari model - model lainnya namun tetap memiliki kesulitan dalam mengenali kelas 0.
+1. Dari model model yang ada bert dapat mengklasifikasikan hoax lebih baik dari model - model lainnya namun tetap memiliki kesulitan dalam mengenali kelas `0`.
 
  © Catatan Cakrawala 2020
