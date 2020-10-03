@@ -10,12 +10,14 @@ Memprediksi Hoax dari gambar dan text.
 
 ## Preprocess Data
 ### Gambar
+1. Checking Missing Data
 1. Karena ukuran gambar yang berbeda - beda maka diambil sample tengah - tengah tiap gambar.<br>
     <img src = "Sample Images/1.jpg" alt = "prep 1" style="display: block; margin-left: auto; margin-right: auto; width: 50%;" />
 1. Resize gambar ke ukuran 512 x 512<br>
 1. Upsampling dengan Augmentasi data.<br>
 Up Sampling data gambar kelas 0 sebesar : 50%, 100%, dan 200%, dengan menggunakan `augmentasi`. Augmentasi yang akan digunakan pada data gambar yaitu:<br>
 `Rotasi secara acak pada rentang -70 sd. 70 derajad`<br>
+    <img src = "Sample Images/download (3).png" alt = "prep 1" style="display: block; margin-left: auto; margin-right: auto; width: 80%;" />
 
 ### Text
 1. Drop Duplicate Value pada data text
