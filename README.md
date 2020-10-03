@@ -1,4 +1,4 @@
-# Big Data Competition - Satria Data 2020
+# Big Data Challenge - Satria Data 2020
 Project team **Catatan Cakrawala** pada lomba `Big Data Challenge - Satria Data 2020`
 ### Task
 Memprediksi Hoax dari gambar dan text (`Binary Classification`).
