@@ -1,5 +1,5 @@
 # Big Data Competition - Satria Data 2020
-Project team **Catatan Cakrawala** pada lomba `Big Data Competition - Satria Data 2020`
+Project team **Catatan Cakrawala** pada lomba `Big Data Challenge - Satria Data 2020`
 ### Task
 Memprediksi Hoax dari gambar dan text (`Binary Classification`).
 
@@ -7,7 +7,7 @@ Memprediksi Hoax dari gambar dan text (`Binary Classification`).
 | Keterangan          | Laman Kontent |
 |   -------------     |:-------------:| 
 | Website sumber data | [turnbackhoax.id](http://turnbackhoax.id/)                  |
-| Kaggle Data         | [dsini](https://www.kaggle.com/wahyusetianto/data-bdc)      |
+| Kaggle Data         | [disini](https://www.kaggle.com/wahyusetianto/data-bdc)      |
 | Model               | [disini](https://www.kaggle.com/pencarikebahagiaan/modelku) |
 
 ## Preprocess Data
