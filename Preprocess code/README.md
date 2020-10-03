@@ -26,6 +26,10 @@ Script untuk `Preprocessing` pada data text.
 Fungsi :
 1. `FeatureExtraction` => Extract feature/konten dalam text berupa `URL`, `Hashtag`, `Tag`, `Emoji` untuk mendapatkan frekuensi kemunculannya dan MASKING untuk proses `encode` dan `decode`.
 2. `SpellChecker` => Mengecek dan membenarkan kata-kata yang misstype/typo.
+3. `clean_up` => Membersihkan `\n` dan mengubah menjadi `lowercased` data text
+4. `normalize` => Normalisasi peletakan tanda baca
+5. `remove_punc` => Menghapus tanda baca
+6. `deemojized` => Mengganti `Emoji` menjadi kalimat 
 
 ## Requirements :
 ### `RPU.py`
@@ -36,6 +40,7 @@ Fungsi :
    * tensorflow >= 2.1.0
    * sklearn & skimage
 ### `Preprocess.py`
+   * numpy
    * pandas
    * emoji
    * tqdm
