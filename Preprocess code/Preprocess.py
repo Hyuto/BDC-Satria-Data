@@ -229,11 +229,11 @@ class SpellChecker(object):
         """
         # Read File
         if direc == 'cc-hand-fixed':
+            data = self.get_file()
+        else:
             f = open(direc, "r")
             data = f.readlines()
             f.close()
-        else:
-            data = self.get_file()
 
         # Main
         for w in data:
