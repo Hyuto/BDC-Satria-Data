@@ -4,6 +4,7 @@ from pandas import DataFrame
 from emoji import get_emoji_regexp, demojize
 from string import punctuation, digits, ascii_lowercase
 from tqdm.notebook import tqdm
+from urllib.request import urlopen
 
 class FeatureExtraction(object):
     """
@@ -206,22 +207,41 @@ class SpellChecker(object):
     """
     def __init__(self):
         self.words = {}    # Words
+
+    @staticmethod
+    def get_file():
+        """
+        Generate .txt file frome Catatan Cakrawala BDC Satria Data responsitory.
+
+        Returns:
+            [list]: [description]
+        """
+        data = urlopen("https://raw.githubusercontent.com/Hyuto/BDC-Satria-Data/master/fixed_vocab.txt").read().decode('utf-8')
+        return data.split("\n")
         
-    def fit(self, direc:str):
+    def fit(self, direc:str = 'cc-hand-fixed'):
         """
         Fitting untuk mendapatkan vocab yang salah dan vocab yang benar dari file txt
 
         Args:
-            direc (str): Direktori file txt yang berisi vocab
+            direc (str, optional): Direktori file txt yang berisi vocab. Defaults to 'cc-hand-fixed'.
+                                   'cc-hand-fixed' : Catatan Cakrawala Hand Fixed Vocab
         """
-        f = open(direc, "r")
-        for w in f.readlines():
+        # Read File
+        if direc == 'cc-hand-fixed':
+            f = open(direc, "r")
+            data = f.readlines()
+            f.close()
+        else:
+            data = self.get_file()
+
+        # Main
+        for w in data:
             if len(w.split()) == 2:
                 missed, true = w.split()
                 if '_' in true:
                     true = ' '.join(true.split('_'))
                 self.words[missed] = true
-        f.close()
         
     def transform(self, arr):
         """
