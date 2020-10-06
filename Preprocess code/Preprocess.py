@@ -214,7 +214,7 @@ class SpellChecker(object):
         Generate .txt file frome Catatan Cakrawala BDC Satria Data responsitory.
 
         Returns:
-            [list]: [description]
+            [list]: List kata" yang vocabulary yang tersedia untuk dibenarkan.
         """
         data = urlopen("https://raw.githubusercontent.com/Hyuto/BDC-Satria-Data/master/fixed_vocab.txt").read().decode('utf-8')
         return data.split("\n")
