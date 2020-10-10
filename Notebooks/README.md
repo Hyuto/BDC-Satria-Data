@@ -5,8 +5,8 @@
 
 |  Notebook                    | Kaggle        | Binder   |
 |   -------------              |:-------------:| :------: |
-| `BDC - EfficientNetB7.ipynb` |       -       | [![Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/Hyuto/BDC-Satria-Data/281544ffdd40c801525ae0612f668454cb294cfc?filepath=Notebooks%2FBDC%20-%20EfficientNetB7.ipynb) |
-| `BDC - Main Notebook.ipynb`  | [di sini](https://www.kaggle.com/wahyusetianto/bdc-main-notebook) | [![Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/Hyuto/BDC-Satria-Data/281544ffdd40c801525ae0612f668454cb294cfc?filepath=Notebooks%2FBDC%20-%20Main%20Notebook.ipynb) |
+| `BDC - EfficientNetB7.ipynb` |       -       | [![Binder](https://mybinder.org/badge_logo.svg)](https://gesis.mybinder.org/binder/v2/gh/Hyuto/BDC-Satria-Data/6393cf990fe4cd0dcc3014a96bb960ff3d454c4b?filepath=Notebooks%2FBDC%20-%20EfficientNetB7.ipynb) |
+| `BDC - Main Notebook.ipynb`  | [di sini](https://www.kaggle.com/wahyusetianto/bdc-main-notebook) | [![Binder](https://mybinder.org/badge_logo.svg)](https://gesis.mybinder.org/binder/v2/gh/Hyuto/BDC-Satria-Data/6393cf990fe4cd0dcc3014a96bb960ff3d454c4b?filepath=Notebooks%2FBDC%20-%20Main%20Notebook.ipynb) |
 
 ## Note
 `Binder` hanya bisa untuk view saja untuk `copy and run` silahkan gunakan `kaggle`
