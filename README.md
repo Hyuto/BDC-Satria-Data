@@ -38,14 +38,14 @@ Up Sampling data gambar kelas 0 sebesar : 50%, 100%, dan 200%, dengan menggunaka
 Melakukan masking untuk kata kata yang mengandung `URL, Hashtag, Tag, Emoji`
     ```
     # Contoh
-    Website Statistika UNJ adalah http://fmipa.unj.ac.id/statistika/
-    BEM Statistika UNJ #AltairBergerakMengukir
+    Website Google adalah http://google.com
+    Jangan lupa pakai masker #StaySafe
     @jokowi adalah presiden RI
     Lucu 😂
 
     # Encode
-    Website Statistika UNJ adalah MASKURLS1MASK
-    BEM Statistika UNJ MASKHASHTAGS1MASK
+    Website Google adalah MASKURLS1MASK
+    Jangan lupa pakai masker MASKHASHTAGS1MASK
     MASKTAGS1MASK adalah presiden RI
     Lucu MASKEMOJIS1MASK
     ```
@@ -62,10 +62,10 @@ Melakukan normalisasi text yang berkaita dengan tanda baca berdasarkan kaidah pe
 Mengembalikan konten yang di `encode` sebelumnya.
     ```
     # Contoh
-    Website Statistika UNJ adalah MASKURLS1MASK
+    Website Google adalah MASKURLS1MASK
 
     # Decode
-    Website Statistika UNJ adalah http://fmipa.unj.ac.id/statistika/
+    Website Google adalah http://google.com
     ```
 1. Clear String Punctuation<br>
 Menghapus tanda baca dari data text
