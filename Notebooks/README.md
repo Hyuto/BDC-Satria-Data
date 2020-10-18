@@ -10,3 +10,5 @@
 
 ## Note
 `Binder` hanya bisa untuk view saja untuk `copy and run` silahkan gunakan `kaggle`
+
+ © Catatan Cakrawala 2020
