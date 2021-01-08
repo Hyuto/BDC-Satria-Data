@@ -18,7 +18,7 @@ Memprediksi Hoax dari gambar dan text (`Binary Classification`).
 | Kaggle Data         | [disini](https://www.kaggle.com/wahyusetianto/data-bdc)     |
 | Model               | [disini](https://www.kaggle.com/pencarikebahagiaan/modelku) |
 
-## Preprocess Data
+## [Preprocess Data](https://github.com/Hyuto/BDC-Satria-Data/tree/master/Preprocess%20code)
 
 Preprocessing data.
 
